@@ -50,7 +50,7 @@ tf.distribute.experimental.TPUStrategy(tpu) : TPU들과 TPU Pod들과 동기화
 
 # Load Data
 
-````python
+```python
 GCS_PATH = KaggleDatasets().get_gcs_path()
 MONET_FILENAMES = tf.io.gfile.glob(str(GCS_PATH + '/monet_tfrec/*.tfrec'))
 print('Monet TFRecord Files:', len(MONET_FILENAMES))
