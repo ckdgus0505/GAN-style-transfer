@@ -78,5 +78,5 @@ tf.keras.layers.Conv2D(
 )
 ```
 
-![./etc/Keras Conv2D Params.PNG](./etc/Keras Conv2D Params.PNG)
+![./etc/Keras Conv2D Params.PNG](https://github.com/ckdgus0505/GAN-style-transfer/blob/master/ImSangKyun/etc/Keras%20Conv2D%20Params.PNG)
 
