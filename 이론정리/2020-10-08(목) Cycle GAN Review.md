@@ -37,11 +37,11 @@ Unet 의 대표적인 기술 중 skip-connection을 설명을 해야할 차례�
 
 [11]
 
-Generator 은 위 그림을 다 수행한 모습이다
+Generator 은 그림2를 다 수행한 모습이다
 
 [12]
 
-Discriminator은 위 그림에서 왼쪽 절반만 시용하여 재구성(reconstruction)을 하지 않고, 스칼라 값만을 출력하도록 만들었다.
+Discriminator은 그림2에서 왼쪽 절반만 시용하여 재구성(reconstruction)을 하지 않고, 스칼라 값만을 출력하도록 만들었다.
 
 [13]
 
@@ -57,9 +57,46 @@ Discriminator은 위 그림에서 왼쪽 절반만 시용하여 재구성(recons
 
 그림1의 Generator, Discriminator 이 모두 마련되었다.
 
+![Cycle%20GAN%20b8c0232a79c4443eba74b3e1b8369bb4/cyclegan_loss.jpg](Cycle%20GAN%20b8c0232a79c4443eba74b3e1b8369bb4/cyclegan_loss.jpg)
+
+그림3, cycle gan 모델 구조
+
  [15]
 
 Generator, Discriminator로 Cycle GAN 구조를 정의해보자
+
+model 안에는 2개의 generator, 2개의 discriminator가 존재한다. 
+
+m_gen, m_disc, p_gen, p_disc
+
+m_gen으로 일반 사진을 모네 화풍의 그림으로 바꾼것(fake_monet)을 p_gen을 이용하여 다시 일반 사진(cycled_photo)으로 바꾼다.
+
+마찬가지로, 모네의 그림을  p_gen에 넣어 가짜 사진(fake_photo)으로 만들고, 다시 가짜 사진을 m_gen에 넣어 모네 그림(cycled_monet)으로 변경한다.
+
+또한, 모네의 사진을 m_gen에 넣어 모네의 사진 그대로(same monet)를 출력하길 기대해본다. 
+
+사진을 p_gen에 넣어 일반 사진 그대로(same photo)를 출력하길 기대해본다.
+
+m_disc 는 real_monet 와 fake monet 을 각각 판단하여 결과를 내놓는다. (각각, disc_real_monet, disc_fake_monet)
+
+또한 p_disc는 real_photo 와 fake_photo를 각각 판단하여 결과를 내놓는다. (각각, disc_real_photo, disc_fake_photo)
+
+이제, 이것들의 loss 를 계산한다. 
+
+total generator loss 는 gen loss +  cycle loss + identity loss의 합으로 이루어진다.
+
+cycle_loss_fn ⇒ real_image, cycled_image의 값을 1:1로 비교하여 평균을 내어 구한다. 
+
+identity_loss_fn ⇒ real_image , same_image의 값을 1:1로 비교하여 평균을 내어 구한다. 
+
+gen_loss_fn ⇒ disc_fake_monet 로 값을 구함 
+
+disc_loss_fn(discriminator_loss) ⇒ discriminator를 위한 loss function, disc_real_monet, disc, fake_monet을 input으로 받아 monet_disc_loss를 출력
+disc_real_photo, disc_fake_photo를 input으로 받아 photo_disc_loss를 출력
+
+(real 과 fake 를 비교하여 loss 를 내놓는다.)
+
+을 사용한다. 
 
 [16 ~ 19]
 
@@ -67,11 +104,11 @@ loss 를 정의해야 한다.
 
 [16]은 discriminator 을 학습시킬때 필요한 loss
 
-[17]은 generator을 학습시킬때 필요한 loss
+[17]은 generator을 학습시킬때 필요한 loss, 
 
-[18]은 cycle loss (변환이 얼마나 잘되었는지를 나타냄
+[18]은 cycle loss (변환이 얼마나 잘되었는지를 나타냄, real_image, cycled_image의 값을 1:1로 비교하여 평균을 내어 구한다
 
-[19]는 identity loss ( 변환을 한 이미지를 다시 변환하였을때 얼마나 원본과 같은지의 loss)
+[19]는 identity loss ( 변환을 한 이미지를 다시 변환하였을때 얼마나 원본과 같은지의 loss), real_image , same_image의 값을 1:1로 비교하여 평균을 내어 구한다. 
 
 [20]
 
