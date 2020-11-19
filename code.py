@@ -22,7 +22,7 @@ while vidcap.isOpened():
 
 pathOut = "C:/Users/forea/PycharmProjects/untitled1/test.mp4"
 fps = 30
-lent = 1160
+lent = cnt
 frame_array = []
 
 # 사진을 동영상으로 합침
