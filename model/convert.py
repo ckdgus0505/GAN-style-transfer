@@ -21,9 +21,12 @@ import argparse
 #                     help='input video')
 # parser.add_argument('--output', dest='output', metavar='o', type=str, default = './out',
 #                     help='output path')
-
+os.mkdir('./tmp')
+os.mkdir('./out')
 
 # In[2]:
+clip = mp.VideoFileClip("./input.mp4")
+clip.audio.write_audiofile("./out/audio.mp3")
 
 
 vidcap = cv2.VideoCapture('./input.mp4')
@@ -47,8 +50,7 @@ length
 # In[5]:
 
 
-os.mkdir('./tmp')
-os.mkdir('./out')
+
 
 
 # In[6]:
@@ -94,7 +96,7 @@ get_ipython().system('python test.py --dataroot ./tmp/ --name Unet_n_layer --net
 
 
 ## 새로만들 동영상의 정보 ##
-pathOut = "./result.mp4" # output 경로
+pathOut = "./out/result.mp4" # output 경로
 frame_array = [] #사진 정보가 담길 리스트
 size = (256,256) # 사이즈
 
@@ -109,18 +111,21 @@ for idx in range(0, length):
 out = cv2.VideoWriter(pathOut,cv2.VideoWriter_fourcc(*'DIVX'), fps, size) # out은 결과물 VideoWriter("경로", 확장자, 프레임, 크기)
 
 ## 사진 -> 동영상 ##
-for i in range(len(frame_array)): # out에 사진들을 쓰는 반복문
+for i in range(length): # out에 사진들을 쓰는 반복문
     # writing to a image array
     out.write(frame_array[i])
 out.release()
 
 
 # In[13]:
+videoclip = VideoFileClip("./out/result.mp4") # 위에서 새로 만든 Video
+audioclip = AudioFileClip("./out/audio.mp3") # 맨 처음에 추출한 소리
 
+videoclip.audio = audioclip # 소리를 새로 만든 Video에 합성
+videoclip.write_videofile("result.mp4") # Output
 
 shutil.rmtree('./tmp', ignore_errors=True)
 shutil.rmtree('./out/', ignore_errors=True)
-
 
 # In[ ]:
 
