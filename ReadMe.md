@@ -46,9 +46,11 @@ input 영상을 simpson 풍의 영상으로 변환하여 출력해줍니다.
 
 # 프로젝트 결과
 <original>
+  
 ![original](./images/original.gif)
 
 <converted>
+  
 ![converted](./images/converted.gif)
 
 
