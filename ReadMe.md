@@ -44,14 +44,17 @@ input 영상을 simpson 풍의 영상으로 변환하여 출력해줍니다.
 
 * 프로젝트 일정은 조정될 수 있습니다.
 
+## 모델
+[/model](./model)
+
 # 프로젝트 결과
 > original
-  
+
 ![original](./images/original.gif)
 
 
 > converted
-  
+
 ![converted](./images/converted.gif)
 
 
@@ -64,5 +67,6 @@ input 영상을 simpson 풍의 영상으로 변환하여 출력해줍니다.
 - [Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)
 - [Cycle GAN Github](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
 - [Simpsons Homepage](https://www.fox.com/the-simpsons/)
+
 
 
