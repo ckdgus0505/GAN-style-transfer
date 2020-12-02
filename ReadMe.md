@@ -45,11 +45,21 @@ input 영상을 simpson 풍의 영상으로 변환하여 출력해줍니다.
 * 프로젝트 일정은 조정될 수 있습니다.
 
 # 프로젝트 결과
-
+<original>
 ![original](./images/original.gif)
 
+<converted>
 ![converted](./images/converted.gif)
 
 
+
+# 참고자료
+
+- [Generative Adversarial Nets](https://proceedings.neurips.cc/paper/2014/hash/5ca3e9b122f61f8f06494c97b1afccf3-Abstract.html)
+-[Unpaired Image-To-Image Translation Using Cycle-Consistent Adversarial Networks](https://openaccess.thecvf.com/content_iccv_2017/html/Zhu_Unpaired_Image-To-Image_Translation_ICCV_2017_paper.html)
+- [U-Net: Convolutional Networks for Biomedical Image Segmentation](https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28)
+- [Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)
+- [Cycle GAN Github](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
+- [Simpsons Homepage](https://www.fox.com/the-simpsons/)
 
 
