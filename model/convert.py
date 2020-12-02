@@ -25,9 +25,11 @@ os.mkdir('./tmp')
 os.mkdir('./out')
 
 # In[2]:
-clip = mp.VideoFileClip("./input.mp4")
-clip.audio.write_audiofile("./out/audio.mp3")
-
+try:
+    clip = mp.VideoFileClip("./input.mp4")
+    clip.audio.write_audiofile("./out/audio.mp3")
+except:
+    print('')
 
 vidcap = cv2.VideoCapture('./input.mp4')
 
@@ -118,12 +120,14 @@ out.release()
 
 
 # In[13]:
-videoclip = VideoFileClip("./out/result.mp4") # 위에서 새로 만든 Video
-audioclip = AudioFileClip("./out/audio.mp3") # 맨 처음에 추출한 소리
+try:
+    videoclip = VideoFileClip("./out/result.mp4") # 위에서 새로 만든 Video
+    audioclip = AudioFileClip("./out/audio.mp3") # 맨 처음에 추출한 소리
 
-videoclip.audio = audioclip # 소리를 새로 만든 Video에 합성
-videoclip.write_videofile("result.mp4") # Output
-
+    videoclip.audio = audioclip # 소리를 새로 만든 Video에 합성
+    videoclip.write_videofile("result.mp4") # Output
+except:
+    shutil.copy2('./out/result.mp4','./result.mp4')
 shutil.rmtree('./tmp', ignore_errors=True)
 shutil.rmtree('./out/', ignore_errors=True)
 
