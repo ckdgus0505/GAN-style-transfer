@@ -45,16 +45,18 @@ input 영상을 simpson 풍의 영상으로 변환하여 출력해줍니다.
 * 프로젝트 일정은 조정될 수 있습니다.
 
 # 프로젝트 결과
-<original>
+> original
   
 ![original](./images/original.gif)
 
-<converted>
+
+---
+> converted
   
 ![converted](./images/converted.gif)
 
 
-
+---
 # 참고자료
 
 - [Generative Adversarial Nets](https://proceedings.neurips.cc/paper/2014/hash/5ca3e9b122f61f8f06494c97b1afccf3-Abstract.html)
