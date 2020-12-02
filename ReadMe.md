@@ -12,6 +12,7 @@ Cycle GAN을 이용하여 paired data가 없이도 학습이 가능하도록 하
 Cycle GAN 의 Generator에는 U-Net, Discriminator 에는 fully connected layer을 적용하였고,
 미국의 tv 애니메이션인 The simpsons 의 스타일을 학습하여
 input 영상을 simpson 풍의 영상으로 변환하여 출력해줍니다.
+---
 
 # Team Name : GAN때문이야
 
